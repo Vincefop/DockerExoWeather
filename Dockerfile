@@ -2,7 +2,7 @@
 FROM node:16-alpine3.14
 
 # Je détermine un espace de travail
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Je copie les fichiers
 COPY . .
@@ -14,4 +14,4 @@ RUN npm install
 # EXPOSE 4200
 
 # Démarrer l'app : npm run start
-CMD ["npm", "run", "start"]
+# CMD ["npm", "run", "start"] il existe un entrypoint

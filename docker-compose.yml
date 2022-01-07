@@ -12,3 +12,4 @@ services:
   app:
     build: .
     container_name: weather-api
+    entrypoint: ["node", "app", "--location $$(LOCATION)"]
