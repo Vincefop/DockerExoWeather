@@ -1,0 +1,14 @@
+version: '3.8'
+
+
+# On a pas de network, pas de bd
+# Ici on va automatiser : 
+# docker build -t vincefop/weather-main:1.0.0 .
+# docker run -d --name weather-api vincefop/weather-main:1.0.0
+
+
+
+services:
+  app:
+    build: .
+    container_name: weather-api
