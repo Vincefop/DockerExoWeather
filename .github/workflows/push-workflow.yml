@@ -25,4 +25,36 @@ jobs:
         run: npm run build --if-present
       - name: Sinon test
         run: npm test
-
+  docker:
+    needs: build-app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récuperation du repo
+        uses: actions/checkout@v2
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
+      - name: Install QEMU Docker
+        uses: docker/setup-qemu-action@v1
+      - name: Install BuildX docker
+        uses: docker/setup-buildx-action@v1
+      - name: Connection à docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: build et push mon image docker
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: vincefop/weather-main_app:latest
