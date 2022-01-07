@@ -57,4 +57,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: vincefop/weather-main_app:latest
+          tags: vincefop/weather-main_app:latest 
