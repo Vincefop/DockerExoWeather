@@ -1,0 +1,9 @@
+1. Récuperer le repo et créer un repo en votre nom 
+1.5. Construire un docker-compose pour tester l'application en local
+2. Construire une image docker qui fait fonctionner l'application 
+3. Créer 2 workflow :
+    . Un workflow pour les TU -> push 
+    . Un workflow qui fait les tests et qui construit 
+        l'image docker et qui la push sur votre docker hub -> pull request 
+
+ENVOYER LE REPO A VOTRE FORMATEUR ADORé COEUR SUR VOUS 
